@@ -23,7 +23,7 @@ def say_hello():
         </head>
         <body>
             <h1>Hi There!</h1>
-            <form action="/greet">
+            <form action="/greet" method="POST">
                 <label>What's your name? <input type="text" name="person"></label>
                 <br>
                 <label>Select a compliment: 
@@ -39,15 +39,15 @@ def say_hello():
 
     """
 
-@app.route('/greet')
+@app.route('/greet', methods=["POST"])
 def greet_person():
-    player = request.args.get("person")
+    player = request.form.get("person")
 
-    AWESOMENESS = [
-        'awesome', 'terrific', 'fantastic', 'neato', 'fantabulous', 'wowza', 'oh-so-not-meh',
-        'brilliant', 'ducky', 'coolio', 'incredible', 'wonderful', 'smashing', 'lovely']
+    # AWESOMENESS = [
+    #     'awesome', 'terrific', 'fantastic', 'neato', 'fantabulous', 'wowza', 'oh-so-not-meh',
+    #     'brilliant', 'ducky', 'coolio', 'incredible', 'wonderful', 'smashing', 'lovely']
 
-    compliment = request.args.get("compliment")
+    compliment = request.form.get("compliment")
 
     return """
     <!DOCTYPE html>
